@@ -7,9 +7,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import com.example.contadormvvm.Counter.ViewModel.CounterViewModel
 
 @Composable
 fun CounterScreen() {
+    val context = LocalContext.current
+    val counterViewModel = CounterViewModel(context)
+
     Scaffold { paddingValues ->
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -17,8 +22,8 @@ fun CounterScreen() {
                 .padding(paddingValues)
                 .fillMaxWidth()
         ) {
-            CounterValue()
-            CounterButtons()
+            CounterValue(counterViewModel)
+            CounterButtons(counterViewModel)
 
         }
     }

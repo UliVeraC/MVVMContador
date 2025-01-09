@@ -13,17 +13,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import com.example.contadormvvm.Counter.ViewModel.CounterViewModel
 
 @Composable
-fun CounterButtons() {
+fun CounterButtons(counterViewModel: CounterViewModel) {
     Row(
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier
             .padding(16.dp)
             .fillMaxWidth()
     ) {
-        CounterButton(Icons.Default.KeyboardArrowUp, function = { })
-        CounterButton(Icons.Default.KeyboardArrowDown, function = { })
+        CounterButton(Icons.Default.KeyboardArrowDown, function = {
+            counterViewModel.decrement()
+        })
+        CounterButton(Icons.Default.KeyboardArrowUp, function = {
+            counterViewModel.increment()
+        })
+
     }
 }
 
